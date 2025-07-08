@@ -1,0 +1,30 @@
+.main-content-home {
+    position: fixed;
+    inset: 0;
+    bottom: 70px;  
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100% ;
+    z-index: 2000;
+}
+  .invite-users-button {  
+    width:300px;
+    padding: 0.75rem;
+    background-color: #6EAA84; /* a nice green */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  } 
+
+  .invite-users-button:hover {
+    background-color: #7dc296; /* a nice green */
+  }

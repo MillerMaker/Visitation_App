@@ -1,0 +1,35 @@
+
+.modal-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: black;
+  padding: 0;
+  margin-left: -8px;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-right: 40px; /* compensate for back button */
+  color: black;
+}
+
+.link-button {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #666;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}

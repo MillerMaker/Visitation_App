@@ -1,0 +1,70 @@
+    .location-panel-parent { 
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px; 
+    max-width: 400px;
+    min-width: 400px; 
+    position: absolute;
+    display: flex; 
+    flex-wrap: wrap; 
+    bottom: 0; 
+    left : 50%; 
+    transform: translateX(-50%);
+    z-index: 500;
+  }
+  
+  .location-panel {
+    background: white;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 300px;
+    max-height: 0px;
+    position: relative;
+    bottom: 0;
+    overflow:hidden; 
+    left : 50%; 
+    transform: translateX(-50%);
+    z-index: 500;
+  }
+  
+  @media(min-width: 768px) {
+    .location-panel {
+      left : 50%; 
+      right: auto;
+      width: 320px;
+    }
+  }
+  
+  .location-panel h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .new-visit-button {
+    display: block;
+    width: 90%;
+    max-width: 300px;
+    margin: 1rem auto;
+    padding: 0.75rem;
+    background-color: #6EAA84; /* a nice green */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .new-visit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .new-visit-button:active {
+    background-color: #3e8e41;
+  }

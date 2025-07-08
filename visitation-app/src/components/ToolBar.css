@@ -1,0 +1,15 @@
+.tool-bar-container {
+  position: fixed;           /* Fix it to the viewport */
+  bottom: 0;                 /* Stick it to the bottom */
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: env(safe-area-inset-bottom); /* typo fixed: 'safe-area' not 'save-area' */
+  background-color: #ffffff;
+  min-height: 60px;
+  z-index: 2000;
+}

@@ -1,0 +1,35 @@
+.recenter-map-btn {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px; 
+    margin-bottom: 15px; 
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s; 
+    z-index: 3000;
+    left: 100%;
+    transform: translateX(-65%);
+}
+
+.recenter-map-btn:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    background: #e6f0ff;
+}
+
+.recenter-map-btn svg {
+    fill: #1976d2;      /* Blue fill */
+    color: #1976d2;     /* For Lucide icons that use color */
+    width: 28px;
+    height: 28px;
+}
+
+.recenter-map-btn:hover svg {
+    fill: #1565c0;      /* Darker blue on hover */
+    color: #1565c0;
+}

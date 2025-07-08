@@ -1,0 +1,180 @@
+/* Modal Background Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    bottom: 70px;
+  }
+  
+  /* Modal Container */
+  .modal-container {
+    background: rgb(245, 245, 245);
+    border-radius: 12px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100% ;
+    z-index: 2000;
+  }
+  
+  .modal-content {
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* chevron stays left */
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.2s;
+    position: relative;
+    z-index: 1; /* make sure it's clickable */
+    margin-left: 10px;
+  }
+
+  .modal-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(80, 80, 80);
+    margin: 0;
+  }
+  
+  .close-button:hover {
+    color: black;
+  }
+  
+  /* Text Area */
+  .modal-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: none;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    width: 100%;
+    margin-top: 15px;
+    box-sizing: border-box;
+    padding: 10px;
+    background: #c3e6cb;
+    color: #155724;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .submit-button:hover {
+    background: #b1dfbb;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .button-row input[type="button"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: light;
+    color: rgb(80, 80, 80);
+  }
+  
+  .button-row input[value="Receptive"] {
+    background-color: #B5E2C4
+  }
+  
+  .button-row input[value="Not Interested"] {
+    background-color: #F6F6F6;
+  }
+  
+  .button-row input[value="No Answer"] {
+    background-color: #F6F6F6;
+  }
+
+  .button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.visit-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.visit-button.selected {
+  border-color: green;
+  background: #e6f5ea;
+  color: green;
+}
+
+.visit-button:hover {
+  background: #f0f0f0;
+}
+
+.new-visit-button {
+  display: block;
+  width: 90%;
+  max-width: 300px;
+  margin: 1rem auto;
+  padding: 0.75rem;
+  background-color: #6EAA84; /* a nice green */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.new-visit-button:hover {
+  background-color: #45a049;
+}
+
+.new-visit-button:active {
+  background-color: #3e8e41;
+}
