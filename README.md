@@ -1,7 +1,11 @@
 # Visitation_App
  A real-time web app for my church's weekly visitation outrach, built with .NET backend, React frontend, and Microsoft SQL Server.
- This app features real-time location updates, visit history, and user location tracking.
- 
-![image](https://github.com/user-attachments/assets/3583f840-be69-4ac1-ab5e-5139baef41bb)
+ This app is desitned to track which doors we've knocked, where each team member is at, and store a history of each visit so we can plan our outreaches more effectively. 
+ The visuals are both desktop and mobile friendly.
 
-![image](https://github.com/user-attachments/assets/db638328-c045-4232-b5be-02c04fcb671d)
+ The app is currently in pre-production, but hopefully a link to demo the live site will be coming soon!
+ 
+
+![image](https://github.com/user-attachments/assets/18a99533-f1ee-4e3d-a54b-272bbbdd9fc0)
+
+![image](https://github.com/user-attachments/assets/f1e82bf8-2d52-4b0b-b843-5994adc99d94)
