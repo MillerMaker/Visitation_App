@@ -139,8 +139,6 @@ public static class LocationController
             return Results.Ok(locations);
         })
         .WithName("getNearbyLocations");
-
-
         // Provide location ID, and a new visit entry will be created
         app.MapPost("newvisit", async (int locationID, string visitOutcome, string notes, HttpContext httpContext) => {
             var userIdClaim = httpContext.User.FindFirst(ClaimTypes.NameIdentifier);

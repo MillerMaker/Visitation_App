@@ -48,7 +48,7 @@ const MapView = () => {
     const map = useMap();
 
     useEffect(() => {
-      if (map) {
+      if (map != null) {
         map.on('click', onMapClick);
         map.on('dragend', onMapMove);
 

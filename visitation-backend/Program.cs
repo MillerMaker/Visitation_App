@@ -7,6 +7,11 @@ using System.Text;
 // rm -rf ./publish
 // dotnet publish -c Release -o ./publish
 
+// To start both frontend and backend servers in development:
+// from the root directory:
+    // CD visitation-app
+    // npm run dev
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -52,6 +57,10 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    var jwtKey = Environment.GetEnvironmentVariable("Jwt__Key") ?? builder.Configuration["Jwt:Key"];
+    if (string.IsNullOrEmpty(jwtKey))
+        throw new InvalidOperationException("JWT key is missing in configuration.");
+    
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -60,7 +69,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Jwt__Key") ?? builder.Configuration["Jwt:Key"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
     };
 });
 
@@ -76,7 +85,7 @@ app.MapControllers();
 var webSocketManager = app.Services.GetRequiredService<WebSocketManager>();
 
 //Map Rest and websocket Routes
-webSocketManager.MapWebSocketRoutes(app);
+//webSocketManager.MapWebSocketRoutes(app);
 LocationController.MapLocationRoutes(app, connectionString);
 AuthenticationController.MapAuthenticationRoutes(app, connectionString, baseFrontendUrl);
 

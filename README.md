@@ -5,6 +5,10 @@
 
  The app is currently in pre-production, but hopefully a link to demo the live site will be coming soon!
  
+ ### Development Settings
+ To launch the backend and frontend simultaneously, perform the following commands from the root directory:
+ cd visitation-app
+ npm run dev
 
 ![image](https://github.com/user-attachments/assets/18a99533-f1ee-4e3d-a54b-272bbbdd9fc0)
 
