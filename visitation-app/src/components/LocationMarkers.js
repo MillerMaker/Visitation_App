@@ -1,5 +1,5 @@
 // components/LocationMarkers.jsx
-import React from "react";
+import React, {useEffect} from "react";
 import { Marker, Popup, useMap} from "react-leaflet";
 import L from "leaflet";
 import locationOutline from "../assets/locationOutline.png";
@@ -7,6 +7,11 @@ import locationFilled from "../assets/locationFilled.png";
 
 const LocationMarkers = ({ locations = [], onSelectLocation }) => {
   const map = useMap();
+
+  if (locations == null) {
+    return <></>
+  }
+
   const locationOutlineIcon = L.icon({
     iconUrl: locationOutline,
     iconSize: [60, 70],
@@ -20,7 +25,7 @@ const LocationMarkers = ({ locations = [], onSelectLocation }) => {
     iconAnchor: [30, 51],
     popupAnchor: [1, -34],
   });
-
+  
   const handleMarkerClick = (location) => {
     onSelectLocation(location);
     map.flyTo([location.latitude, location.longitude], 18, { animate: true });
@@ -28,7 +33,7 @@ const LocationMarkers = ({ locations = [], onSelectLocation }) => {
 
   return (
     <>
-      {locations.map((location, index) => (
+      {locations.map((location, index) => ( 
         <Marker 
           key={index}
           position={[location.latitude, location.longitude]} 

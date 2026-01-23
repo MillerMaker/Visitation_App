@@ -31,6 +31,10 @@ const MapView = () => {
     }
   }, [position, fetchLocations]);
 
+  useEffect(() => {
+    console.log(locationData);
+  }, [locationData])
+
   const onVisitCreated = async () => {
     setSelectedLocation(null);
     // Force a refetch when modal closes
