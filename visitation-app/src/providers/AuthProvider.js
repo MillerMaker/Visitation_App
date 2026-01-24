@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react'; 
+import { createContext, useState, useContext, useRef } from 'react'; 
 import { getUserFromToken, loginToBackend } from '../services/authenticationServices'; // Import your JWT utility function
 
 const AuthContext = createContext();
@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
       if (token) {
         try {
           const userData = getUserFromToken(token);
+          console.log("Checking authentication. If we get here without an error ")
           return {
             isAuthenticated: true,
             userId: userData.UserID,
@@ -41,18 +42,19 @@ export function AuthProvider({ children }) {
     
 
   const login = async (phone, password) => {
-    var {token} = await loginToBackend(phone, password);
-    console.log(token.toString());
-    var userData = await getUserFromToken(token)
-
-    localStorage.setItem('token', token); 
+    var {token} = await loginToBackend(phone, password); 
+    localStorage.setItem("token", token);
     
-    setAuthState({
+    // Extract user data from token and update state
+    const userData = getUserFromToken(token);
+    const newState = {
       isAuthenticated: true,
-      userId: userData.UserId,
-      orgId: userData.OrganizationId,
-      phoneNumber: userData.phoneNumber,
-    });
+      userId: userData.UserID,
+      orgId: userData.OrganizationID,
+      phoneOrEmail: userData.phoneOrEmail,
+    };
+    setAuthState(newState);
+    return newState;
   };
 
   const logout = () => {

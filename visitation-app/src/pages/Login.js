@@ -18,8 +18,8 @@ const Login = () => {
     e.preventDefault();
     try {
       console.log("Phone is currently: ", authState.phoneOrEmail, "\n Password is: ", authState.password)
-      await login(authState.phoneOrEmail, password );
-      if (authState.isAuthenticated) {
+      const result = await login(authState.phoneOrEmail, password );
+      if (result && result.isAuthenticated) {
         navigate("/");
       } else {
         //login failed
