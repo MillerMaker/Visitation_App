@@ -12,6 +12,10 @@ using System.Text;
     // CD visitation-app
     // npm run dev
 
+    
+    //Phone: 706-980-3010 
+    //Password: pass (I think)
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 

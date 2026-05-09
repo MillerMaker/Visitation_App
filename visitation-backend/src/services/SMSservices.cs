@@ -17,16 +17,21 @@ public class SMSservices
     }
     public async Task sendInviteSMS(string phoneNumber, Guid token, string baseFrontendUrl)
     {
-        TwilioClient.Init(_twilioAccountSid, _twilioAuthToken);
+        try {
+            TwilioClient.Init(_twilioAccountSid, _twilioAuthToken);
+            
+            var urlWithToken = $"{baseFrontendUrl}/auth/{token}";
+            var messageOptions = new CreateMessageOptions(new PhoneNumber($"{phoneNumber}"));
+            messageOptions.From = new PhoneNumber("+18335840803");
+            messageOptions.Body = $"You've been invited to join Highways and Hedges, Click to register: {urlWithToken}";
 
-        var urlWithToken = $"{baseFrontendUrl}/auth/{token}";
-
-        var messageOptions = new CreateMessageOptions(new PhoneNumber($"{phoneNumber}"));
-        messageOptions.From = new PhoneNumber("+18335840803");
-        messageOptions.Body = $"You've been invited to join Highways and Hedges, Click to register: {urlWithToken}";
-
-
-        var message = await MessageResource.CreateAsync(messageOptions);
-        Console.WriteLine(message.Body);
+            var message = await MessageResource.CreateAsync(messageOptions);
+            Console.WriteLine($"Message sent successfully: {message.Sid}");
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"SMS Error: {ex.Message}");
+            Console.WriteLine($"Using AccountSid: {_twilioAccountSid}");
+            throw;
+        }
     }
 }
