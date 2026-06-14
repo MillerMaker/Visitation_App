@@ -46,7 +46,8 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:3000", // For DEV
-            "https://visitation-frontend-bkdzgffegjanheab.centralus-01.azurewebsites.net" // For PROD
+            "https://visitation-frontend-bkdzgffegjanheab.centralus-01.azurewebsites.net",
+            "https://visitation-app-neon.vercel.app/" // For PROD
         )
               .AllowAnyMethod()
               .AllowAnyHeader();

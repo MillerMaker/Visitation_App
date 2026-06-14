@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useContext } from 'react';
+import React, {useContext } from 'react';
 import { BrowserRouter, Routes, Route, Outlet} from "react-router-dom";
 import { WebSocketContext } from './providers/WebSocketProvider'; // Import the WebSocket context
 import { AuthProvider } from './providers/AuthProvider'; // Import the AuthProvider
@@ -27,35 +27,6 @@ function Layout() {
 
 function App() {
   const { position } = useGeolocation(15000); // Update every 5 seconds
-  
-  const socket = useContext(WebSocketContext);  
-
-  // useEffect(() => {
-  //   if (socket.current) {
-  //     const sendLocationUpdate = () => {
-  //       if (socket.current.readyState === WebSocket.OPEN) {
-  //         const payload = {
-  //           type: 'locationUpdate',
-  //           userId: 'abc123',
-  //           organizationId: 'org456',
-  //           latitude: '81.1111',
-  //           longitude: '313413'
-  //         };
-  //         socket.current.send(JSON.stringify(payload));
-  //         console.log('Location update sent:', payload);
-  //       } else {
-  //         console.warn('WebSocket is not open. Cannot send location update.');
-  //       }
-  //     };
-
-  //     // Wait for the WebSocket to open before sending the message
-  //     if (socket.current.readyState === WebSocket.CONNECTING) {
-  //       socket.current.onopen = sendLocationUpdate;
-  //     } else {
-  //       sendLocationUpdate();
-  //     }
-  //   }
-  // }, [position]);
 
   return (
     <AuthProvider>
