@@ -21,12 +21,19 @@ var configuration = builder.Configuration;
 
 var connectionString = configuration.GetSection("DBSettings")["ConnectionString"];
 if (string.IsNullOrEmpty(connectionString))
+{
+    Console.WriteLine("ERROR: Database connection string is missing in configuration.");
+    Console.WriteLine("Please set DBSettings:ConnectionString in appsettings or DBSETTINGS__CONNECTIONSTRING environment variable.");
     throw new InvalidOperationException("Database connection string is missing in configuration.");
+}
 
 
 var baseFrontendUrl = configuration.GetSection("AppSettings")["BaseFrontendURL"];
 if (string.IsNullOrEmpty(baseFrontendUrl))
-    throw new InvalidOperationException("Base Frontend URL is missing in configuration.");
+{
+    Console.WriteLine("Warning: Base Frontend URL is missing in configuration. Using default.");
+    baseFrontendUrl = "https://visitation-app-neon.vercel.app"; // Default fallback
+}
 
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
@@ -47,7 +54,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(
             "http://localhost:3000", // For DEV
             "https://visitation-frontend-bkdzgffegjanheab.centralus-01.azurewebsites.net",
-            "https://visitation-app-neon.vercel.app/" // For PROD
+            "https://visitation-app-neon.vercel.app" // For PROD (no trailing slash)
         )
               .AllowAnyMethod()
               .AllowAnyHeader();
