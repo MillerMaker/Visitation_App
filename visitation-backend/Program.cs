@@ -69,7 +69,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    var jwtKey = Environment.GetEnvironmentVariable("Jwt__Key") ?? builder.Configuration["Jwt:Key"];
+    var jwtKey = Environment.GetEnvironmentVariable("Jwt__Key") ?? configuration.GetSection("JWT")["Key"];
     if (string.IsNullOrEmpty(jwtKey))
         throw new InvalidOperationException("JWT key is missing in configuration.");
     

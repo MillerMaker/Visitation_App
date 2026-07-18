@@ -1,15 +1,17 @@
-    .location-panel-parent { 
+    .location-panel-parent {
     border-top-right-radius: 8px;
-    border-top-left-radius: 8px; 
-    max-width: 400px;
-    min-width: 400px; 
+    border-top-left-radius: 8px;
+    width: min(400px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    min-width: 0;
     position: absolute;
-    display: flex; 
-    flex-wrap: wrap; 
-    bottom: 0; 
-    left : 50%; 
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 0;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 500;
+    box-sizing: border-box;
   }
   
   .location-panel {
@@ -18,23 +20,24 @@
     border-top-left-radius: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    max-width: 400px;
-    min-width: 400px;
+    width: min(400px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    min-width: 0;
     min-height: 300px;
     max-height: 0px;
     position: relative;
     bottom: 0;
-    overflow:hidden; 
-    left : 50%; 
+    overflow: hidden;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 500;
+    box-sizing: border-box;
   }
   
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
+    .location-panel-parent,
     .location-panel {
-      left : 50%; 
-      right: auto;
-      width: 320px;
+      width: min(320px, calc(100vw - 24px));
     }
   }
   

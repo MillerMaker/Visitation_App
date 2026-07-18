@@ -11,7 +11,7 @@ import "leaflet/dist/leaflet.css";
 import "../components/LocationInfo.css";
 
 // FYI, start the app and backend using `npm run dev` and then open the console to see the logs.
-// To build and deploy the app, use `npm run build` and then deploy the `build` folder to your server.
+// To build and deploy the app, just push to main. It should build and publish the backend and frontend. 
 
 
 // This is a simple map view component that uses React Leaflet to display a map with user and location markers.
@@ -87,7 +87,7 @@ const MapView = () => {
         />
         <LocationMarkers 
           locations={locationData} 
-          onSelectLocation={setSelectedLocation} 
+          onSelectLocation={setSelectedLocation}
         />
         <MapEventHandler 
           onMapClick={handleMapClick} 
