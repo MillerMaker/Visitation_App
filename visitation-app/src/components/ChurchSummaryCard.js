@@ -7,11 +7,14 @@ function ChurchSummaryCard() {
 
   useEffect(() => {
     async function fetchData() {
-      // const result = await getMostRecentOutreachData();
+      //const result = await getMostRecentOutreachData();
       setData({
         activeUsers: /*result.activeUsers */ 13,
         totalVisits: /* result.totalVisits */ 100,
         timeElapsed: /* result.timeElapsed */ 10
+        // activeUsers: 13,
+        // totalVisits: 100,
+        // timeElapsed: 10
       });
     }
 
@@ -24,21 +27,18 @@ function ChurchSummaryCard() {
         <img src={logo} alt="Concord Logo" className="logo" />
         <div className="title-section">
           <h2>Concord Baptist Church</h2>
-          <span className="subtitle">Last Saturday:</span>
+          <span className="subtitle">Last Outreach:</span>
         </div>
       </div>
       <div className="stats">
         <div className="stat">
-          <div className="stat-value">{data.timeElapsed}</div>
-          <div className="stat-label">time elapsed</div>
-        </div>
-        <div className="stat">
-          <div className="stat-value">{data.totalVisits}</div>
-          <div className="stat-label">visits</div>
-        </div>
-        <div className="stat">
           <div className="stat-value">{data.activeUsers}</div>
           <div className="stat-label">members</div>
+        </div>
+        <div className="stat">
+          <div className="stat-label"> made </div>
+          <div className="stat-value">{data.totalVisits}</div>
+          <div className="stat-label">total visits</div>
         </div>
       </div>
     </div>
