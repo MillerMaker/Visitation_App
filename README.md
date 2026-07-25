@@ -3,7 +3,7 @@
  This app is designed to track which doors we've knocked, where each team member is at, and store a history of each visit so we can plan our outreaches more effectively. 
  The visuals are both desktop and mobile friendly.
 
-[Visit the app](visitation-app-neon.vercel.app)
+[Visit the app](https://visitation-app-neon.vercel.app/)
  
  ### Development Settings
  To launch the backend and frontend simultaneously, perform the following commands from the root directory:
