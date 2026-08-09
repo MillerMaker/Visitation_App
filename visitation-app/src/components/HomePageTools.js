@@ -20,7 +20,7 @@ function HomePageTools() {
           <Mail></Mail>
           <div className="tool-name">Invite New Users</div> 
         </div>
-        <div className="tool" onClick = {() => {navigate("/users")}}>
+        <div className="tool" onClick = {() => {}}>
           <div className = 'tool-icon'><Church></Church></div>
           <div className="tool-name">Edit Organization</div> 
         </div>

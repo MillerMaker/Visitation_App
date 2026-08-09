@@ -91,3 +91,26 @@ export async function getInvite(inviteToken){
     }
 }
 
+export async function isTokenExpired(token) {
+    if (!token) {
+        return true;
+    }
+
+    try {
+        const response = await axios.post(`${backendUrl}/isTokenExpired`, null, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        return response?.data?.expired === true;
+    } catch (e) {
+        if (e?.response?.status === 401) {
+            return true;
+        }
+
+        console.error("Error checking token:", e);
+        return true;
+    }
+}
+

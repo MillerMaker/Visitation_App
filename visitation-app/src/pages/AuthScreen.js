@@ -45,7 +45,7 @@ const AuthScreen = ({inviteToken}) => {
         <form onSubmit={handleSubmit} className="authenticate-form">
           <input
             type="phone"
-            placeholder="phone number or email address"
+            placeholder="phone number"
             value={phoneOrEmail}
             onChange={(e) => setPhoneOrEmailInput(e.target.value)}
             required

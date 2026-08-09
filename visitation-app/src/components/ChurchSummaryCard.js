@@ -36,7 +36,6 @@ function ChurchSummaryCard() {
           <div className="stat-label">members</div>
         </div>
         <div className="stat">
-          <div className="stat-label"> made </div>
           <div className="stat-value">{data.totalVisits}</div>
           <div className="stat-label">total visits</div>
         </div>

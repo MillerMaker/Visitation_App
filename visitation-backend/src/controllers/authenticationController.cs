@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc; 
 using Microsoft.Data.SqlClient;
@@ -105,6 +106,45 @@ public static class AuthenticationController {
             catch (Exception e)
             {
                 return Results.BadRequest(e);
+            }
+        });
+
+        app.MapPost("/isTokenExpired", async (HttpContext httpContext) =>
+        {
+            try
+            {
+                var authHeader = httpContext.Request.Headers.Authorization.ToString();
+                if (string.IsNullOrWhiteSpace(authHeader) || !authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                {
+                    return Results.Json(new { expired = true, message = "Missing bearer token." }, statusCode: StatusCodes.Status401Unauthorized);
+                }
+
+                var token = authHeader["Bearer ".Length..].Trim();
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    return Results.Json(new { expired = true, message = "Missing bearer token." }, statusCode: StatusCodes.Status401Unauthorized);
+                }
+
+                var jwtHandler = new JwtSecurityTokenHandler();
+                var jwtToken = jwtHandler.ReadJwtToken(token);
+                var expirationClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "exp")?.Value;
+
+                if (string.IsNullOrWhiteSpace(expirationClaim) || !long.TryParse(expirationClaim, out var expirationEpoch))
+                {
+                    return Results.Json(new { expired = true, message = "Token is missing a valid expiration claim." }, statusCode: StatusCodes.Status401Unauthorized);
+                }
+
+                var expirationUtc = DateTimeOffset.FromUnixTimeSeconds(expirationEpoch).UtcDateTime;
+                if (expirationUtc <= DateTime.UtcNow)
+                {
+                    return Results.Json(new { expired = true, message = "Token has expired." }, statusCode: StatusCodes.Status401Unauthorized);
+                }
+
+                return Results.Ok(new { expired = false });
+            }
+            catch (Exception)
+            {
+                return Results.Json(new { expired = true, message = "Token is invalid." }, statusCode: StatusCodes.Status401Unauthorized);
             }
         });
 
